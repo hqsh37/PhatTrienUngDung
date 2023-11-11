@@ -6,15 +6,12 @@
     }
     require_once 'layout/header.php';
     switch($page){
-        case 'index':{
-            require_once("index.php");
-            break;}
         case 'thuchi':{
             require_once("view/vDanhSachCacKhoanChiTieu.php");
             break;}
-            case 'duchi':{
-                require_once("view/vDanhSachKeHoachDuChi.php");
-                break;}
+        case 'duchi':{
+            require_once("view/vDanhSachKeHoachDuChi.php");
+            break;}
         case 'home':{
             require_once("view/vHome.php");
             break;}

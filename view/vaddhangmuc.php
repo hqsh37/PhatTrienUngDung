@@ -5,24 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hạng mục</title>
-    <style>
-       
-        h2{
-            width:400px;
-            border: 1px solid black;
-            border-radius: 20px;
-            text-align: center;
-            background-color: rgb(30, 144, 255);
-            color: aliceblue;
-        }
-        input,textarea{
-            width:400px;
-        }
-        #but{
-            width:200px;
-        }
-       
-    </style>
+    <link rel="stylesheet" href="./css/phuc.css">
     
 </head>
 <body>
@@ -44,10 +27,12 @@
                 <td>
                     <select name="hangm" >
                     <?php
-                    require_once_once("Controller/cproduct.php");
+                    include_once("Controller/cproduct.php");
                     $pro= new controlpro();
+                    $options = '<option value="all">Tất cả</option>'; // Thêm tùy chọn "Tất cả"
                     $table=$pro->getallproducy1();
                     if(mysql_num_rows($table)){
+                       
                         while($row=mysql_fetch_assoc($table)){
                             echo "<option value=".$row["id"].">".$row["tenhangmuc"]."</option>";
                         }
@@ -76,7 +61,7 @@
 </body>
 </html>
 <?php
-require_once_once("Controller/cproduct.php");
+include_once("Controller/cproduct.php");
 if(isset($_REQUEST['btnsub'])){
     $ten=$_REQUEST['tenhm'];
     $hangmuc=$_REQUEST['hangm'];
