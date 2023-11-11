@@ -21,12 +21,28 @@
         case 'taikhoan':{
             require_once("view/vQLTaiKhoan.php");
             break;}
+        case 'phantichchitieu':{
+            require_once("view/vPhanTichChiTieu.php");
+            break;}
+        case 'canhbao':{
+            require_once("view/vCanhBao.php");
+            break;}
+        case 'duthu':{
+            require_once("view/vKeHoachDuThu.php");
+            break;}
+        case 'nhacnho':{
+            require_once("view/vNhacNhoNhapLieu.php");
+            break;
+        }
+        case 'xuat':{
+            require_once("view/vXuatDuLieu.php");
+            break;}
         case 'home':{
             require_once("view/vHome.php");
             break;}
         default: {
             require_once("index.php");}
-    }
+}
     include_once("view/vhangmucvahanmuc.php");
             $p = new viewpro();
             //Hạng mục
