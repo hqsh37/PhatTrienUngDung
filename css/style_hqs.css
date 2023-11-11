@@ -1,0 +1,58 @@
+/* DsKHTC.php */
+.rs-btn {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    line-height: normal;
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+    -webkit-appearance: none;
+}
+
+
+/* signUp.php */
+
+
+/* QLtaiKhoan.php */
+.body-qltk {
+    display: flex;
+    flex-direction: row;
+}
+
+.container-qltk {
+    min-width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sub-tk {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #ffff;
+    min-width: 450px;
+    height: 55px;
+    margin-top: 16px;
+    border-radius: 25px;
+}
+
+.icon-subtk {
+    font-size: 1.6rem;
+    padding: 12px;
+}
+
+.icon-more {
+    position: absolute;
+    cursor: pointer;
+    right: 16px;
+    padding: 9px;
+}
