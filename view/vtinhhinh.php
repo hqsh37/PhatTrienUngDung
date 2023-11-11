@@ -1,8 +1,8 @@
 <?php
 // Kết nối cơ sở dữ liệu
  $servername = "localhost";
- $username = "20042221";
- $password = "12345";
+ $username = "1";
+ $password = "1402";
  $dbname = "quanlythuchi";
 
  // Xử lý khi người dùng bấm nút "Xem biểu đồ"
