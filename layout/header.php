@@ -47,13 +47,19 @@ $user = true;
             </button>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <button class="btn btn-outline-secondary ct-font">Báo Cáo</button>
-          </a>
+        <li class="nav-item dropdown">
+          <button class="btn btn-outline-secondary ct-font">
+            Báo Cáo
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item nav-link" href="index.php?vtinhhinh">Tình Hình Thu Chi</a>
+            <a class="dropdown-item nav-link" href="?page=taichinhhientai">Tài Chính Hiện Tại</a>
+            <a class="dropdown-item nav-link" href="?page=phantichthu">Phân Tích Thu</a>
+            <a class="dropdown-item nav-link" href="?page=phantichchitieu">Phân Tích Chi Tiêu</a>
+          </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="?page=canhbao">
             <button class="btn btn-outline-secondary ct-font">
               Cảnh Báo Chi Tiêu
             </button>
@@ -64,9 +70,12 @@ $user = true;
             Chức Năng Khác
           </button>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="?page=duchi">DanhSachKeHoachDuChi</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="?page=duchi">Kế Hoạch Dự Chi</a>
+            <a class="dropdown-item" href="?page=duthu">Kê Hoạch Dự Thu</a>
+            <a class="dropdown-item" href="index.php?hangmuc">Quản Lý Hạng Mục</a>
+            <a class="dropdown-item" href="index.php?hanmuc">Hạn Mức Chi</a>
+            <a class="dropdown-item" href="?page=nhacnho">Nhắc Nhở Nhập Liệu</a>
+            <a class="dropdown-item" href="?page=xuat">Xuất Dữ Liệu</a>
           </div>
         </li>
       </ul>
