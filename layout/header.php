@@ -1,6 +1,3 @@
-<?php
-  
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,9 +6,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./css/header.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="font/themify-icons/themify-icons.css">
     <title>Money Care</title>
-    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
 </head>
+
+<?php
+$user = true;
+
+?>
 
 <body>
     <div class="container">
@@ -46,18 +49,13 @@
             </button>
           </a>
         </li>
-        <li class="nav-item dropdown">
-          <button class="btn btn-outline-secondary ct-font">
-            Báo Cáo
-          </button>
-          <div class="dropdown-menu">
-            <a class="dropdown-item nav-link" href="?page=phantichchitieu">Phân Tích Chi Tiêu</a>
-            <a class="dropdown-item nav-link" href="#">Another action</a>
-            <a class="dropdown-item nav-link" href="#">Something else here</a>
-          </div>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <button class="btn btn-outline-secondary ct-font">Báo Cáo</button>
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="?page=canhbao">
+          <a class="nav-link" href="#">
             <button class="btn btn-outline-secondary ct-font">
               Cảnh Báo Chi Tiêu
             </button>
@@ -68,21 +66,30 @@
             Chức Năng Khác
           </button>
           <div class="dropdown-menu">
-            <a class="dropdown-item nav-link" href="?page=kehoachduthu">Kế Hoạch Dự Thu</a>
-            <a class="dropdown-item nav-link" href="#">Another action</a>
-            <a class="dropdown-item nav-link" href="#">Something else here</a>
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
           </div>
         </li>
       </ul>
     </div>
     <div class="user">
-      <div class="ct-name">
-        <p>Hoang Quang Sang</p>
-      </div>
-      <div class="avt">
-        <img src="img/icon/user.png" alt="logo" />
-      </div>
-    </div>
+      <?php
+        if($user){
+          echo  "<div class='ct-name'>
+              <p>Hoang Quang Sang</p>
+            </div>
+            <div class='avt'>
+              <img src='img/icon/user.png' alt='logo' />
+            </div>
+          </div>";
+        } else {
+          echo "<button type='button' class='btn btn-outline-primary'>Login</button>";
+        }
+          
+
+      ?>
+     
   </nav>
 </header>
         <div class="body">

@@ -4,26 +4,24 @@
     } else {
     $page = '';
     }
-    // require_once 'model/connect.php';
-    // $conn;
-    // $c = new ketnoidatabase();
-    // $c -> connect($conn);
     require_once 'layout/header.php';
     switch($page){
+        case 'index':{
+            require_once("index.php");
+            break;}
         case 'thuchi':{
             require_once("view/vDanhSachCacKhoanChiTieu.php");
             break;}
-        case 'canhbao':{
-            require_once("view/vCanhBao.php");
-            break;}
-        case 'phantichchitieu':{
-            require_once("view/vPhanTichChiTieu.php");
-            break;}
-        case 'kehoachduthu':{
-            require_once("view/vKeHoachDuThu.php");
-            break;}
+        case 'home':{
+            require_once("view/vHome.php");
+            break;
+        }
+        case 'taikhoan':{
+            require_once("./view/vQLTaiKhoan.php");
+            break;
+        }
         default: {
-            require_once("view/vHome.php");}
+            require_once("index.php");}
     }
     require_once 'layout/footer.php';
 ?>
