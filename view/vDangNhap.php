@@ -138,7 +138,7 @@
             </form>  
             <div class="text-center">
                 <a href="#">Quên mật khẩu</a>
-                <p class="dangky">Chưa có tài khoản<a href="danhgky.html">&nbsp;Đăng ký tại đây</a></p>
+                <p class="dangky">Chưa có tài khoản<a href="./vSignup.php">&nbsp;Đăng ký tại đây</a></p>
             </div>  
             </div>
           </div>
@@ -147,8 +147,6 @@
     
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-        </script>
-	@@ -76,4 +162,4 @@
         </script>
 </body>
 </html>

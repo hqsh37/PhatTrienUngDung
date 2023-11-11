@@ -16,7 +16,25 @@
 
 
 /* signUp.php */
+.body-signup {
+    background-color: #dbf0ff;
+}
 
+.container.ct-signup {
+    max-width: 600px;
+    margin-top: 32px;
+    background-color: #9dd1ff;
+    padding: 27px;
+    border-radius: 22px;
+}
+
+.btn-signup {
+    margin: 8px 37%;
+    background-color: #03b8ff;
+    color: #fff;
+    border-radius: 25px;
+    font-size: 1.6rem;
+}
 
 /* QLtaiKhoan.php */
 .body-qltk {
@@ -55,4 +73,8 @@
     cursor: pointer;
     right: 16px;
     padding: 9px;
+}
+
+.dis-none {
+    display: none;
 }
