@@ -1,10 +1,15 @@
+<?php
+// Import
+include "view/QLTaiKhoan/Modal.php";
+include "view/QLTaiKhoan/TaiKhoan.php";
+?>
+
 <div class="container">
     <div class="body-qltk">
         <div class="nav-qltk">
             <h4>Quản Lý tài Khoản</h4>
             <p>Tong tien: <b>1.000.000d</b></p>
             <?php
-                    include "view/QLTaiKhoan/Modal.php";
                     $btn = new Modal();
                     echo $btn->ButtonModal('Thêm Tài Khoản',"btn-them-tk","btn btn-outline-secondary", "button");
                 ?>
@@ -19,17 +24,17 @@
 
             <div class="taikhoan">
                 <?php
-                    include "view/QLTaiKhoan/TaiKhoan.php";
                     $taiKhoan = new TaiKhoan();
-                    echo $taiKhoan->TaiKhoan("Mua Sắm 1", "400.000đ");
-                    echo $taiKhoan->TaiKhoan("Mua Sắm 2", "800.000đ");
-                    echo $taiKhoan->TaiKhoan("Mua Sắm 3", "600.000đ");
+                    echo $taiKhoan->ViewTaiKhoan("Mua Sắm 1", "400.000đ");
+                    echo $taiKhoan->ViewTaiKhoan("Mua Sắm 2", "800.000đ");
+                    echo $taiKhoan->ViewTaiKhoan("Mua Sắm 3", "600.000đ");
                 ?>
-                
+
 
             </div>
         </div>
     </div>
+    <!-- Modal -->
     <?php
     $formThem ="<form>
     <div class='form-group'>
@@ -56,7 +61,7 @@
             echo $viewModal->ViewModal("Tạo tài khoản", $formThem, "Hủy", "Lưu", "btn-them-tk", "aria-labelledby='staticBackdropLabel' data-backdrop='static' data-keyboard='false'");
             echo $viewModal->ViewModal("Sửa tài khoản", $formThem, "Hủy", "Lưu", "btn-sua", "aria-labelledby='staticBackdropLabel' data-backdrop='static' data-keyboard='false'");
             echo $viewModal->ViewModal("Thông Báo", "<p>Bạn có chắc muốn xóa khoản chi tiêu này không ?</p>", "Hủy", "Xác nhận", "btn-xoa", "");
-        ?>
+    ?>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
@@ -64,4 +69,3 @@
         integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
     </script>
 </div>
-

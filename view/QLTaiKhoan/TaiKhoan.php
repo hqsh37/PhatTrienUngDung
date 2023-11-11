@@ -1,11 +1,11 @@
 <?php
 
+
 class TaiKhoan{
     // public $ten;
     // public $soTien;
 
-    function TaiKhoan($ten, $soTien) {
-        include "./Modal.php";
+    function ViewTaiKhoan($ten, $soTien) {
         $btn = new Modal();
         $sua = $btn->ButtonModal('Sửa',"btn-sua","", "a");
         $btn1 = new Modal();
