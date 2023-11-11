@@ -60,7 +60,7 @@ $conn->close();
     
     <title>Biểu đồ cột PHP</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<link rel="stylesheet" href="./css/phuc.css">
+<link rel="stylesheet" href="css/phuc.css">
 </head>
 <body>
     
