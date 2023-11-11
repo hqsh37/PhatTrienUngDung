@@ -87,7 +87,7 @@ $user = false;
                         <img src='img/icon/user.png' alt='logo' />
                         </div>";
                     } else {
-                    echo "<button type='button' class='btn btn-outline-primary'><a href='view/vSignup.php'>Login</a></button>";
+                    echo "<a class='nav-link' href='view/vSignup.php'><button type='button' class='btn btn-outline-primary ct-font'>Login</button></a>";
                     }?>
                 </div>
             </nav>
@@ -103,9 +103,9 @@ $user = false;
                     interactive: true,
                 });
 
-                userAvt.addEventListener('click', function() {
-                    tippyInstance.show();
-                });
+                // userAvt.addEventListener('click', function() {
+                //     tippyInstance.show();
+                // });
             });
             </script>
         </header>
