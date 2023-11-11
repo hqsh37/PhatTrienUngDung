@@ -12,6 +12,12 @@
         case 'duchi':{
             require_once("view/vDanhSachKeHoachDuChi.php");
             break;}
+        case 'taichinhhientai':{
+            require_once("view/vTaiChinhHienTai.php");
+            break;}
+        case 'phantichthu':{
+            require_once("view/vPhanTichThu.php");
+            break;}
         case 'home':{
             require_once("view/vHome.php");
             break;}
