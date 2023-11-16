@@ -22,15 +22,18 @@ session_start();
 
 // }
 // $_SESSION['user_id'] = 1;
-$user_id = $_SESSION['user_id'];
-if($_SESSION['user_id']) {
+if(isset($_SESSION['user_id'])) {
+    if($_SESSION['user_id']) {
+    $user_id = $_SESSION['user_id'];
     $user = true;
     $trangThai = "";
 
-} else {
-    $user = false;
-    $trangThai = "disabled";
+    } else {
+        $user = false;
+        $trangThai = "disabled";
 }
+}
+
 ?>
 
 
@@ -52,7 +55,8 @@ if($_SESSION['user_id']) {
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="?page=taikhoan">
-                                <button class="btn btn-outline-secondary ct-font" <?php echo $trangThai; ?> >Tài Khoản</button>
+                                <button class="btn btn-outline-secondary ct-font" <?php echo $trangThai; ?>>Tài
+                                    Khoản</button>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -90,7 +94,10 @@ if($_SESSION['user_id']) {
                 </div>
                 <div class="user">
                     <?php
-                    $name = $_SESSION["firtname"]." ".$_SESSION["lastname"];
+                    $name = "";
+                    if(isset($_SESSION["firtname"]) && isset($_SESSION["lastname"])) {
+                        $name = $_SESSION["firtname"]." ".$_SESSION["lastname"];
+                    }
                     
                     if($user){
                     echo  "<div class='ct-name'>
