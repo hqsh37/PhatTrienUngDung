@@ -46,6 +46,7 @@
         <script src="https://unpkg.com/tippy.js@6"></script>
         <script src="js/jquery.min.js"></script>
         <script src="js/popper.min.js"></script>
+        <script src="js/main_hqs.js"></script>
       
         
 </html>

@@ -62,3 +62,20 @@ header .ct-name p {
 li.nav-item.dropdown {
   padding: 8px;
 }
+
+.body {
+  min-height: 650px;
+}
+
+.dropdown-menu {
+  background-color: #dbf0ff;
+}
+
+a.dropdown-item:hover {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.dropdown .disabled.dropdown-menu {
+  display: none;
+}

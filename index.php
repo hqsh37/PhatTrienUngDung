@@ -7,6 +7,9 @@
     require_once 'layout/header.php';
     switch($page){
         case 'thuchi':{
+            if (isset($_GET['loai'])) {
+                include "view/QLThuChi/xlyThuchi.php";
+            }
             require_once("view/vDanhSachCacKhoanChiTieu.php");
             break;}
         case 'duchi':{
@@ -19,6 +22,9 @@
             require_once("view/vPhanTichThu.php");
             break;}
         case 'taikhoan':{
+            if (isset($_GET['loai'])) {
+                include "view/QLTaiKhoan/xlyTK.php";
+            }
             require_once("view/vQLTaiKhoan.php");
             break;}
         case 'phantichchitieu':{
@@ -40,6 +46,22 @@
         case 'home':{
             require_once("view/vHome.php");
             break;}
+        case 'dxuat':{
+            $_SESSION['user_id'] = 0;
+            echo '<script>';
+            echo 'alert("Đăng Xuất thành công!");';
+            echo 'window.location.href = "index.php";';
+            echo '</script>';
+            break;
+        }
+        case 'dnhap':{
+            $_SESSION['user_id'] = 1;
+            echo '<script>';
+            echo 'alert("Đăng nhập thành công!");';
+            echo 'window.location.href = "index.php";';
+            echo '</script>';
+            break;
+        }
         default: {
             require_once("index.php");}
 }

@@ -26,8 +26,8 @@
       <td>4 500 000</td>
       <td>14/12/2023 - 13/04/2023</td>
       <td>
-      <button type="button" data-toggle="modal" class="rs-btn" data-target="#btnmodal-sua">Sửa </button>/
-        <button type="button" data-toggle="modal" class="rs-btn" data-target="#btnmodel-xoa">xóa </button>
+      <button type="button" data-toggle="modal" class="rs-btn" data-target="#modal-sua">Sửa </button>/
+        <button type="button" data-toggle="modal" class="rs-btn" data-target="#modal-xoa">xóa </button>
         </td>
     </tr>
     <tr>
@@ -35,8 +35,8 @@
       <td>35 000 000</td>
       <td>14/12/2023 - 13/04/2023</td>
       <td>
-      <button type="button" data-toggle="modal" class="rs-btn" data-target="#btnmodal-sua">Sửa </button>/
-        <button type="button" data-toggle="modal" class="rs-btn" data-target="#btnmodel-xoa">xóa </button>
+      <button type="button" data-toggle="modal" class="rs-btn" data-target="#modal-sua">Sửa </button>/
+        <button type="button" data-toggle="modal" class="rs-btn" data-target="#modal-xoa">xóa </button>
         </td>
     </tr>
     <tr>
@@ -44,8 +44,8 @@
       <td>45 000 000</td>
       <td>14/12/2023 - 13/04/2023</td>
       <td>
-      <button type="button" data-toggle="modal" class="rs-btn" data-target="#btnmodal-sua">Sửa </button>/
-        <button type="button" data-toggle="modal" class="rs-btn" data-target="#btnmodel-xoa">xóa </button>
+      <button type="button" data-toggle="modal" class="rs-btn" data-target="#modal-sua">Sửa </button>/
+        <button type="button" data-toggle="modal" class="rs-btn" data-target="#modal-xoa">xóa </button>
         </td>
     </tr>
     <tr>
@@ -53,8 +53,8 @@
       <td>5 000 000</td>
       <td>14/12/2023 - 13/04/2023</td>
       <td>
-      <button type="button" data-toggle="modal" class="rs-btn" data-target="#btnmodal-sua">Sửa </button>/
-        <button type="button" data-toggle="modal" class="rs-btn" data-target="#btnmodel-xoa">xóa </button>
+      <button type="button" data-toggle="modal" class="rs-btn" data-target="#modal-sua">Sửa </button>/
+        <button type="button" data-toggle="modal" class="rs-btn" data-target="#modal-xoa">xóa </button>
         </td>
     </tr>
     <tr>
@@ -62,8 +62,8 @@
       <td>2 445 000 000</td>
       <td>14/12/2023 - 13/04/2023</td>
       <td>
-        <button type="button" data-toggle="modal" class="rs-btn" data-target="#btnmodal-sua">Sửa </button>/
-        <button type="button" data-toggle="modal" class="rs-btn" data-target="#btnmodel-xoa">xóa </button>
+        <button type="button" data-toggle="modal" class="rs-btn" data-target="#modal-sua">Sửa </button>/
+        <button type="button" data-toggle="modal" class="rs-btn" data-target="#modal-xoa">xóa </button>
         </td>
     </tr>
   </tbody>
@@ -71,77 +71,39 @@
             </div>
         <div class="row d-flex justify-content-end">
         <td>
-        <button type="button" data-toggle="modal" class="rs-btn" data-target="#exampleModalCenter">Thêm Kế Hoạch Dự Chi </button>
+        <button type="button" data-toggle="modal" class="btn btn-outline-secondary" data-target="#modal-them">Thêm Kế Hoạch Dự Chi </button>
         </td>
         </div>
         </section>
 
         <!-- Modal Sua -->
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Sửa Thông Tin</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-            <form>
-    <div class='form-group'>
-        <label for='sodu-tk'>Tên</label>
-        <input type='text' class='form-control' id='sodu-tk' aria-describedby='emailHelp'>
-    </div>
-    <div class='form-group'>
-        <label for='ten-tk'>Số Tiền</label>
-        <input type='text' class='form-control' id='ten-tk' aria-describedby='emailHelp'>
-    </div>
-    <div class='form-group'>
-        <label for='loai-tk'>Loại tài Khoản</label>
-        <select class='form-control' id='loai-tk'>
-        <option>Tiền mặt</option>
-        <option>Ngân hàng</option>
-        </select>
-    </div>
-    </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                <button type="button" class="btn btn-primary">Lưu</button>
-            </div>
-            </div>
-        </div>
-        </div>
-             <!-- Modal Thêm -->
-             <div class="modal fade" id="modal-them" tabindex="-1" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="modal-sua" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Thêm Thông tin</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Sửa Thông tin</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                        <form>
-        <div class='form-group'>
-        <label for='sodu-tk'>Tên</label>
-        <input type='text' class='form-control' id='sodu-tk' aria-describedby='emailHelp'>
-    </div>
-    <div class='form-group'>
-        <label for='ten-tk'>Số Tiền</label>
-        <input type='text' class='form-control' id='ten-tk' aria-describedby='emailHelp'>
-    </div>
-    <div class='form-group'>
-        <label for='loai-tk'>Loại tài Khoản</label>
-        <select class='form-control' id='loai-tk'>
-        <option>Tiền mặt</option>
-        <option>Ngân hàng</option>
-        </select>
-    </div>
-  
-    </form>
+                         <form >
+                         <div class='form-group'>
+                                    <label for='sodu-tk'>Tên</label>
+                                    <input type='text' class='form-control' id='sodu-tk' aria-describedby='emailHelp'>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='ten-tk'>Số Tiền</label>
+                                    <input type='text' class='form-control' id='ten-tk' aria-describedby='emailHelp'>
+                                </div>
+                                <div class='form-group'>
+                                    <div class="col-3 row form-group">
+                                            <label for="">Thời Gian </label>
+                                        </div>
+                                            <input type="date" name="" id="dateDK" class="form-control">
+                                        </div><br>
+                         </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
@@ -163,12 +125,13 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <p>Bạn có chắc muốn xóa khoản chi tiêu này không ?</p>
+                            <p>Bạn có chắc muốn xóa kế hoạch này không ?</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
                             <button type="button" class="btn btn-primary">Xóa</button>
                         </div>
+                      
                     </div>
                 </div>
             </div>
@@ -185,33 +148,22 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                        <form action="#">
-                            <div class="row form-group">
-                                <div class="col-4">
-                                    <label>Tên</label>
+                        <form >
+                         <div class='form-group'>
+                                    <label for='sodu-tk'>Tên</label>
+                                    <input type='text' class='form-control' id='sodu-tk' aria-describedby='emailHelp'>
                                 </div>
-                                <div class="col-8">
-                                    <input type="text" class="form-control" id="txtTen" placeholder="">
-                                    <span id="errTen" class="text-danger font-italic">(*)</span>
+                                <div class='form-group'>
+                                    <label for='ten-tk'>Số Tiền</label>
+                                    <input type='text' class='form-control' id='ten-tk' aria-describedby='emailHelp'>
                                 </div>
-                            </div>
-                        
-                            </div>
-                            <div class="row form-group">
-                                <div class="col-4">
-                                    <label for="">Số Tiền</label>
-                                </div>
-                        
-                            </div>
-                            <div class="row form-group">
-                                <div class="col-4">
-                                    <label for="">Ngày Tháng Năm</label>
-                                </div>
-                                <div class="col-8">
-                                    <input type="date" name="" id="dateDK" class="form-control">
-                                    <span class="text-danger font-italic" id="errDateDK">(*)</span>
-                                </div>
-                            </div>
+                                <div class='form-group'>
+                                    <div class="col-3 row form-group">
+                                            <label for="">Thời Gian </label>
+                                        </div>
+                                            <input type="date" name="" id="dateDK" class="form-control">
+                                        </div><br>
+                         </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>

@@ -101,6 +101,34 @@
       }
     </style>
 </head>
+
+<?php
+if(isset($_GET['dNhap'])){
+  $email = $_POST["email"];
+  $pass = $_POST["pass"];
+  
+  include "../controller/cSignup.php";
+  $p = new ControlSignup();
+  $data = $p->viewUser($email, $pass);
+    if($data) {
+      session_start();
+      $_SESSION["user_id"] = $data[0]["id"];
+      $_SESSION["firtname"] = $data[0]["firtname"];
+      $_SESSION["lastname"] = $data[0]["lastname"];
+
+      echo '<script>';
+      echo 'alert("Đăng nhập thành công thành công!");';
+      echo 'window.location.href = "../index.php";';
+      echo '</script>';
+    } else {
+        echo '<script>';
+        echo 'alert("Đăng nhập thất bại. Vui lòng kiểm tra lại!");';
+        echo '</script>';
+    }
+}
+
+?>
+
 <body>
     <section class="Form my-5 mx-5">
         <div class="container">
@@ -111,13 +139,13 @@
             </div>
             <div class="col-lg-5 px-5 pt-5" id="dangnhap"> 
               <h1  class="text-center">ĐĂNG NHẬP</h1>
-              <form action="" class="form">
+              <form action="?dNhap=1" method="POST" class="form">
                 <div class="form__username">
                     <div class="form__username--icon form__icon">
                       <i class="fa fa-user" aria-hidden="true"></i>
                     </div>
                     <div class="form__username--input form__input">
-                        <input type="text" id="username" placeholder="Tên đăng nhập">
+                        <input type="email" id="username" name="email" placeholder="Nhập email của bạn">
                         <span></span>
                     </div>
                 </div>
@@ -126,13 +154,13 @@
                       <i class="fa fa-lock" aria-hidden="true"></i>
                     </div>
                     <div class="form__password--input form__input">
-                        <input type="password" id="password" placeholder="Mật khẩu">
+                        <input type="password" id="password" name="pass" placeholder="Mật khẩu">
                         <span class="fa fa-eye" aria-hidden="true" id="togglePassword"></span>
                         <span></span>
                     </div>
                 </div>
                 <div class="form__submit">
-                    <button type="button" class="font-weight-bold">ĐĂNG NHẬP
+                    <button type="submit" class="font-weight-bold">ĐĂNG NHẬP
                     </button>
                 </div>
             </form>  

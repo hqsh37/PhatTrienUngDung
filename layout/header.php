@@ -14,8 +14,26 @@
     <title>Money Care</title>
 </head>
 <?php
-$user = false;
+// use session
+session_start();
+// $_SESSION['user'] = true;
+// $_SESSION['user_id'] = 1;
+// if($_POST['action'] == 'setSession') {
+
+// }
+// $_SESSION['user_id'] = 1;
+$user_id = $_SESSION['user_id'];
+if($_SESSION['user_id']) {
+    $user = true;
+    $trangThai = "";
+
+} else {
+    $user = false;
+    $trangThai = "disabled";
+}
 ?>
+
+
 
 <body>
     <div class="container">
@@ -34,39 +52,32 @@ $user = false;
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="?page=taikhoan">
-                                <button class="btn btn-outline-secondary ct-font">Tài Khoản</button>
+                                <button class="btn btn-outline-secondary ct-font" <?php echo $trangThai; ?> >Tài Khoản</button>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="?page=thuchi">
-                                <button class="btn btn-outline-secondary ct-font">
+                                <button class="btn btn-outline-secondary ct-font" <?php echo $trangThai; ?>>
                                     QL Thu Chi
                                 </button>
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <button class="btn btn-outline-secondary ct-font">
+                            <button class="btn btn-outline-secondary ct-font" <?php echo $trangThai; ?>>
                                 Báo Cáo
                             </button>
-                            <div class="dropdown-menu">
+                            <div class="dropdown-menu <?php echo $trangThai; ?>">
                                 <a class="dropdown-item" href="index.php?vtinhhinh">Tình Hình Thu Chi</a>
                                 <a class="dropdown-item" href="?page=taichinhhientai">Tài Chính Hiện Tại</a>
                                 <a class="dropdown-item" href="?page=phantichthu">Phân Tích Thu</a>
                                 <a class="dropdown-item" href="?page=phantichchitieu">Phân Tích Chi Tiêu</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="?page=canhbao">
-                                <button class="btn btn-outline-secondary ct-font">
-                                    Cảnh Báo Chi Tiêu
-                                </button>
-                            </a>
-                        </li>
                         <li class="nav-item dropdown">
-                            <button class="btn btn-outline-secondary ct-font">
+                            <button class="btn btn-outline-secondary ct-font" <?php echo $trangThai; ?>>
                                 Chức Năng Khác
                             </button>
-                            <div class="dropdown-menu">
+                            <div class="dropdown-menu <?php echo $trangThai; ?>">
                                 <a class="dropdown-item" href="?page=duchi">Kế Hoạch Dự Chi</a>
                                 <a class="dropdown-item" href="?page=duthu">Kê Hoạch Dự Thu</a>
                                 <a class="dropdown-item" href="index.php?hangmuc">Quản Lý Hạng Mục</a>
@@ -79,15 +90,17 @@ $user = false;
                 </div>
                 <div class="user">
                     <?php
+                    $name = $_SESSION["firtname"]." ".$_SESSION["lastname"];
+                    
                     if($user){
                     echo  "<div class='ct-name'>
-                        <p>Thinh Cutee</p>
+                        <p>".$name."</p>
                         </div>
                         <div class='avt' id='user-avt'>
                         <img src='img/icon/user.png' alt='logo' />
                         </div>";
                     } else {
-                    echo "<a class='nav-link' href='view/vSignup.php'><button type='button' class='btn btn-outline-primary ct-font'>Login</button></a>";
+                    echo "<a class='nav-link' href='view/vDangNhap.php'><button type='button' class='btn btn-outline-primary ct-font'>Login</button></a>";
                     }?>
                 </div>
             </nav>
@@ -98,7 +111,7 @@ $user = false;
 
                 // use Tippy
                 var tippyInstance = tippy(userAvt, {
-                    content: "<button type='button' class='btn btn-outline-primary'>Logout</button>",
+                    content: "<a href='?page=dxuat'><button type='button' class='btn btn-outline-primary'>Logout</button></a>",
                     allowHTML: true,
                     interactive: true,
                 });
@@ -110,5 +123,3 @@ $user = false;
             </script>
         </header>
         <div class="body">
-
-            
