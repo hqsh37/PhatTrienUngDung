@@ -2,7 +2,9 @@
 include "controller/cKhoanCT.php";
 
 $user_id = $_SESSION['user_id'];
-
+if($user_id == 0){
+    echo '<script>window.location.href = "?page=home"</script>';
+}
 $p = new ControlKhoanCT();  
 $data = $p->viewKhoanCT($user_id);
 $dataTk = $p->viewTk($user_id);

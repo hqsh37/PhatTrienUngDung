@@ -6,7 +6,7 @@ include "controller/cTaiKhoan.php";
 // get id user for session
 $user_id = $_SESSION['user_id'];
 if($user_id == 0){
-    header("index.php");
+    echo '<script>window.location.href = "?page=home"</script>';
 }
 ?>
 

@@ -34,6 +34,8 @@ if(isset($_SESSION['user_id'])) {
         $user = false;
         $trangThai = "disabled";
 }
+} else {
+    $trangThai = "disabled";
 }
 
 ?>
