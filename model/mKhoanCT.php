@@ -46,6 +46,19 @@ class ModelKhoanCT{
         }
     }
 
+    function xoaKhoanCT($id){
+        $conn;
+        $p=new ketnoidatabase();
+        if($p->connect($conn)){
+            $sql = "DELETE FROM `khoanthuchi` WHERE `id` = '".$id."'";
+            $result = mysqli_query($conn, $sql);
+            $p->disconnect($conn);
+            return $result;
+        }else{
+            return false;
+        }
+    }
+
     // Tai khoan
     function viewTk($userId){
         $conn;

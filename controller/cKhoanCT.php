@@ -38,6 +38,16 @@ class ControlKhoanCT{
         }
     }
 
+    function xoaKhoanCT($id){
+        $p = new ModelKhoanCT();
+        $resultTK= $p->xoaKhoanCT($id);
+        if ($resultTK) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     // tai khoan
     function viewTk($userId){
         $p = new ModelKhoanCT();

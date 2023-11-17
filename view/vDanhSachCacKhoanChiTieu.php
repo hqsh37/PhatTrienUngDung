@@ -17,9 +17,14 @@ $dataHm = $p->viewHangMuc($user_id);
         <div class="body">
             <section>
                 <div class="row d-flex align-items-center justify-content-center">
-                    <div class="col-md-8 d-flex align-items-center justify-content-center content mx-auto">
-                        <p class="bg-primary p-2">Danh Sách Các Khoản Chi Tiêu</p>
-                    </div>
+                    <button type="button" data-toggle="modal" class="btn btn-outline-secondary ct-font mg-8"
+                        data-target="#modal-them-chi">
+                        Thêm Khoản Chi
+                    </button>
+                    <button type="button" data-toggle="modal" class="btn btn-outline-secondary ct-font mg-8"
+                        data-target="#modal-them-thu">
+                        Thêm Khoản thu
+                    </button>
                 </div>
                 <div class="body-kct">
                     <table class="table table-bordered">
@@ -34,19 +39,7 @@ $dataHm = $p->viewHangMuc($user_id);
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td scope="row">Ăn Uống</td>
-                                <td>4 500 000</td>
-                                <td>14/12/2023</td>
-                                <td>Chi</td>
-                                <td>dien giai vd</td>
-                                <td>
-                                    <button type="button" data-toggle="modal" class="rs-btn"
-                                        data-target="#modal-sua">Sửa </button> /
-                                    <button type="button" data-toggle="modal" class="rs-btn"
-                                        data-target="#modal-xoa">xóa </button>
-                                </td>
-                            </tr>
+
                             <?php
                             if (!empty($data)) {
                                 foreach($data as $row){
@@ -73,17 +66,11 @@ $dataHm = $p->viewHangMuc($user_id);
 
                                 }
                             } else {
-                                echo "<h4>Vui lòng thêm tài khoản để sử dụng!</h4>";
+                                echo "<tr><p>Bạn chưa thêm khoản chi tiêu nào !!</p></tr>";
                             }
                             ?>
                         </tbody>
                     </table>
-                </div>
-                <div class="row d-flex justify-content-end">
-                    <td>
-                        <button type="button" data-toggle="modal" class="btn" data-target="#modal-them">Thêm
-                            Các Khoản Chi Tiêu</button>
-                    </td>
                 </div>
             </section>
 
@@ -95,7 +82,12 @@ $dataHm = $p->viewHangMuc($user_id);
                     if (!empty($dataTk)) {
                         $chonTK = "<select class='form-control' id='taikhoan' name='taikhoan'>";
                         foreach($dataTk as $rowTK){
-                            $chonTK = $chonTK."<option value='".$rowTK["id"]."'>".$rowTK["tenTaiKhoan"]."</option>";
+                            if($row["idTK"] == $rowTK["id"]){
+                                $chonTK = $chonTK."<option value='".$rowTK["id"]."' selected>".$rowTK["tenTaiKhoan"]."</option>";
+                            } else {
+                                $chonTK = $chonTK."<option value='".$rowTK["id"]."'>".$rowTK["tenTaiKhoan"]."</option>";
+
+                            }
                     
                         }
                         $chonTK = $chonTK."</select>";
@@ -107,17 +99,26 @@ $dataHm = $p->viewHangMuc($user_id);
                     if (!empty($dataHm)) {
                         $hangmuc = "<select class='form-control' id='hangmuc' name='hangmuc'>";
                         foreach($dataHm as $rowHm){
-                            $hangmuc = $hangmuc."<option value='".$rowHm["id"]."'>".$rowHm["tenhangmuc"]."</option>";
+                            if($rowHm['loaihangmuc'] == $row["loaigiaodich"]) {
+                                $hangmuc = $hangmuc."<option value='".$rowHm["id"]."' selected>".$rowHm["tenhangmuc"]."</option>";
+                            }
                         }
                         $hangmuc = $hangmuc."</select>";
                     } else {
                         $hangmuc = "<input type='text' class='form-control' readonly value='Vui lòng kiểm tra lại hoặc báo với admin!!'>";
                     }
+
+                    $loaiGD = "";
+                    if($row["loaigiaodich"]){
+                        $loaiGD = "Chi";
+                    } else {
+                        $loaiGD = "Thu";
+                    }
                     
                     echo "<div class='modal fade' id='modal-sua".$row["id"]."' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                     <div class='modal-dialog'>
                 
-                        <form method='POST' action='?page=thuchi&loai=xuly&kieu=sua&id=".$row["id"]."'>
+                        <form method='POST' action='?page=thuchi&loai=xuly&kieu=sua&id=".$row["id"]."' enctype='multipart/form-data'>
                             <div class='modal-content'>
                                 <div class='modal-header'>
                                     <h5 class='modal-title' id='exampleModalLabel'>Sửa Thông tin</h5>
@@ -132,7 +133,7 @@ $dataHm = $p->viewHangMuc($user_id);
                                     </div>
                                     <div class='form-group'>
                                         <label for='sotien-ct'>Số Tiền</label>
-                                        <input type='number' class='form-control' id='sotien-ct' name='sotien-ct'>
+                                        <input type='number' class='form-control' id='sotien-ct' name='sotien-ct' value='".$row["sotien"]."'>
                                     </div>
                                     <div class='form-group'>
                                         <div class='row form-group'>
@@ -140,7 +141,7 @@ $dataHm = $p->viewHangMuc($user_id);
                                                 <label for='date-ct'>Thời Gian </label>
                                             </div>
                                             <div class='col-12'>
-                                                <input type='date' name='date-ct' id='date-ct' class='form-control'>
+                                                <input type='date' name='date-ct' id='date-ct' value='".$row["thoigian"]."' class='form-control'>
                                             </div>
                 
                                         </div>
@@ -151,10 +152,8 @@ $dataHm = $p->viewHangMuc($user_id);
                                     </div>
                                     <div class='form-group'>
                                         <label for='loai-gd'>Loại giao dịch</label>
-                                        <select class='form-control' id='loai-gd' name='loai-gd'>
-                                            <option value='1'>Chi</option>
-                                            <option value='0'>Thu</option>
-                                        </select>
+                                        <input type='text' class='form-control'  readonly value='".$loaiGD."'>
+                                        <input type='text' class='form-control dis-none' id='loai-gd' name='loai-gd' value='".$row["loaigiaodich"]."'>
                                     </div>
                                     <div class='form-group'>
                                         <label for='exampleFormControlFile1'>Hình Ảnh</label>
@@ -163,7 +162,7 @@ $dataHm = $p->viewHangMuc($user_id);
                                     <div class='form-group'>
                                         <label for='diengiai-ct'>Diễn giải</label>
                                         <textarea type='text' class='form-control' id='diengiai-ct' name='diengiai-ct'
-                                            aria-describedby='emailHelp'></textarea>
+                                            aria-describedby='emailHelp'>".$row["diengiai"]."</textarea>
                                     </div>
                 
                                 </div>
@@ -197,26 +196,25 @@ $dataHm = $p->viewHangMuc($user_id);
                     </div>
                 </div>";
                 }
-            } else {
-                echo "<h4>Vui lòng thêm tài khoản để sử dụng!</h4>";
             }
             ?>
-            <!-- Modal Thêm -->
-            <div class='modal fade' id='modal-them' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
-            <div class='modal-dialog'>
+            <!-- Modal Thêm khoan chi -->
+            <div class='modal fade' id='modal-them-chi' tabindex='-1' aria-labelledby='exampleModalLabel'
+                aria-hidden='true'>
+                <div class='modal-dialog'>
 
-                <form method='POST' action='?page=thuchi&loai=xuly&kieu=them' enctype='multipart/form-data'>
-                    <div class='modal-content'>
-                        <div class='modal-header'>
-                            <h5 class='modal-title' id='exampleModalLabel'>Tạo khoản thu chi</h5>
-                            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                                <span aria-hidden='true'>&times;</span>
-                            </button>
-                        </div>
-                        <div class='modal-body'>
-                            <div class='form-group'>
-                                <label for='taikhoan'>Chọn tài khoản</label>
-                                <?php
+                    <form method='POST' action='?page=thuchi&loai=xuly&kieu=them' enctype='multipart/form-data'>
+                        <div class='modal-content'>
+                            <div class='modal-header'>
+                                <h5 class='modal-title' id='exampleModalLabel'>Tạo khoản chi</h5>
+                                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                    <span aria-hidden='true'>&times;</span>
+                                </button>
+                            </div>
+                            <div class='modal-body'>
+                                <div class='form-group'>
+                                    <label for='taikhoan'>Chọn tài khoản</label>
+                                    <?php
                                 if (!empty($dataTk)) {
                                     echo "<select class='form-control' id='taikhoan' name='taikhoan'>";
                                     foreach($dataTk as $row){
@@ -228,62 +226,143 @@ $dataHm = $p->viewHangMuc($user_id);
                                     echo "<input type='text' class='form-control' readonly value='Bạn cần thêm tài khoản để sử dụng!!'>";
                                 }
                                 ?>
-                            </div>
-                            <div class='form-group'>
-                                <label for='sotien-ct'>Số Tiền</label>
-                                <input type='number' class='form-control' id='sotien-ct' name='sotien-ct'>
-                            </div>
-                            <div class='form-group'>
-                                <div class='row form-group'>
-                                    <div class='col-3'>
-                                        <label for='date-ct'>Thời Gian </label>
-                                    </div>
-                                    <div class='col-12'>
-                                        <input type='date' name='date-ct' id='date-ct' class='form-control'>
-                                    </div>
-
                                 </div>
-                            </div>
-                            <div class='form-group'>
-                                <label for='hangmuc'>Hạng Mục</label>
-                                <?php
+                                <div class='form-group'>
+                                    <label for='sotien-ct'>Số Tiền</label>
+                                    <input type='number' class='form-control' id='sotien-ct' name='sotien-ct'>
+                                </div>
+                                <div class='form-group'>
+                                    <div class='row form-group'>
+                                        <div class='col-3'>
+                                            <label for='date-ct'>Thời Gian </label>
+                                        </div>
+                                        <div class='col-12'>
+                                            <input type='date' name='date-ct' id='date-ct' class='form-control'>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='hangmuc'>Hạng Mục</label>
+                                    <?php
                                 if (!empty($dataHm)) {
                                     echo "<select class='form-control' id='hangmuc' name='hangmuc'>";
                                     foreach($dataHm as $row){
-                                        echo "<option value='".$row["id"]."'>".$row["tenhangmuc"]."</option>";
+                                        if($row['loaihangmuc'] == 1) {
+                                            echo "<option value='".$row["id"]."'>".$row["tenhangmuc"]."</option>";
+                                        }
                                     }
                                     echo "</select>";
                                 } else {
                                     echo "<input type='text' class='form-control' readonly value='Vui lòng kiểm tra lại hoặc báo với admin!!'>";
                                 }
                                 ?>
-                            </div>
-                            <div class='form-group'>
-                                <label for='loai-gd'>Loại giao dịch</label>
-                                <select class='form-control' id='loai-gd' name='loai-gd'>
-                                    <option value='1'>Chi</option>
-                                    <option value='0'>Thu</option>
-                                </select>
-                            </div>
-                            <div class='form-group'>
-                                <label for='exampleFormControlFile1'>Hình Ảnh</label>
-                                <input type='file' class='form-control-file' id='img-ct' name='img-ct'>
-                            </div>
-                            <div class='form-group'>
-                                <label for='diengiai-ct'>Diễn giải</label>
-                                <textarea type='text' class='form-control' id='diengiai-ct' name='diengiai-ct'
-                                    aria-describedby='emailHelp'></textarea>
-                            </div>
+                                </div>
+                                <div class='form-group dis-none'>
+                                    <input name='loai-gd' value='1'>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='exampleFormControlFile1'>Hình Ảnh</label>
+                                    <input type='file' class='form-control-file' id='img-ct' name='img-ct'>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='diengiai-ct'>Diễn giải</label>
+                                    <textarea type='text' class='form-control' id='diengiai-ct' name='diengiai-ct'
+                                        aria-describedby='emailHelp'></textarea>
+                                </div>
 
+                            </div>
+                            <div class='modal-footer'>
+                                <button type='button' class='btn btn-secondary' data-dismiss='modal'>Hủy</button>
+                                <button type='submit' class='btn btn-primary'>Lưu lại</button>
+                            </div>
                         </div>
-                        <div class='modal-footer'>
-                            <button type='button' class='btn btn-secondary' data-dismiss='modal'>Hủy</button>
-                            <button type='submit' class='btn btn-primary'>Lưu lại</button>
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
-        </div>
+
+            <!-- Modal Thêm khoan thu-->
+            <div class='modal fade' id='modal-them-thu' tabindex='-1' aria-labelledby='exampleModalLabel'
+                aria-hidden='true'>
+                <div class='modal-dialog'>
+
+                    <form method='POST' action='?page=thuchi&loai=xuly&kieu=them' enctype='multipart/form-data'>
+                        <div class='modal-content'>
+                            <div class='modal-header'>
+                                <h5 class='modal-title' id='exampleModalLabel'>Tạo khoản thu</h5>
+                                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                    <span aria-hidden='true'>&times;</span>
+                                </button>
+                            </div>
+                            <div class='modal-body'>
+                                <div class='form-group'>
+                                    <label for='taikhoan'>Chọn tài khoản</label>
+                                    <?php
+                                if (!empty($dataTk)) {
+                                    echo "<select class='form-control' id='taikhoan' name='taikhoan'>";
+                                    foreach($dataTk as $row){
+                                        echo "<option value='".$row["id"]."'>".$row["tenTaiKhoan"]."</option>";
+                                
+                                    }
+                                    echo "</select>";
+                                } else {
+                                    echo "<input type='text' class='form-control' readonly value='Bạn cần thêm tài khoản để sử dụng!!'>";
+                                }
+                                ?>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='sotien-ct'>Số Tiền</label>
+                                    <input type='number' class='form-control' id='sotien-ct' name='sotien-ct'>
+                                </div>
+                                <div class='form-group'>
+                                    <div class='row form-group'>
+                                        <div class='col-3'>
+                                            <label for='date-ct'>Thời Gian </label>
+                                        </div>
+                                        <div class='col-12'>
+                                            <input type='date' name='date-ct' id='date-ct' class='form-control'>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='hangmuc'>Hạng Mục</label>
+                                    <?php
+                                if (!empty($dataHm)) {
+                                    echo "<select class='form-control' id='hangmuc' name='hangmuc'>";
+                                    foreach($dataHm as $row){
+                                        if($row['loaihangmuc'] == 0) {
+                                            echo "<option value='".$row["id"]."'>".$row["tenhangmuc"]."</option>";
+                                        }
+                                    }
+                                    echo "</select>";
+                                } else {
+                                    echo "<input type='text' class='form-control' readonly value='Vui lòng kiểm tra lại hoặc báo với admin!!'>";
+                                }
+                                ?>
+                                </div>
+                                <div class='form-group dis-none'>
+                                    <input name='loai-gd' value='0'>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='exampleFormControlFile1'>Hình Ảnh</label>
+                                    <input type='file' class='form-control-file' id='img-ct' name='img-ct'>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='diengiai-ct'>Diễn giải</label>
+                                    <textarea type='text' class='form-control' id='diengiai-ct' name='diengiai-ct'
+                                        aria-describedby='emailHelp'></textarea>
+                                </div>
+
+                            </div>
+                            <div class='modal-footer'>
+                                <button type='button' class='btn btn-secondary' data-dismiss='modal'>Hủy</button>
+                                <button type='submit' class='btn btn-primary'>Lưu lại</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
         </div>
 
@@ -297,28 +376,3 @@ $dataHm = $p->viewHangMuc($user_id);
 </body>
 
 </html>
-<?php
-if (isset($_POST["Luu"])) {
-    include_once("controller/cQuanLyKhoanChiTieu.php");
-    $id_taikhoan = $_POST["ten"];
-    $sotien = $_POST["sotien"];
-    $thoigian = $_POST["thoigian"];
-    $hangmuc = $_POST["hangmuc"];
-    $hinhanh = $_POST["hinhanh"];
-    $loaigiaodich = $_POST["loaigiaodich"];
-    $id_hangmuc = $_POST["id_hangmuc"];
-
-    // Kiểm tra và xử lý các trường dữ liệu
-    // ...
-
-    $p = new ControllerQuanLyKhoanChiTieu();
-    $kq = $p->addKhoanChiTieu($id_taikhoan, $sotien, $diengiai, $thoigian, $hinhanh, $loaigiaodich, $id_hangmuc);
-    echo '<script>';
-    echo 'var success = ' . json_encode($kq) . ';';
-    echo 'setTimeout(function() {';
-    echo '  showModal(success ? "Thêm thành công" : "Không thêm được");';
-    echo '  setTimeout(function() { window.location.href = "vHome.php"; }, 3000);';
-    echo '}, 1000);';
-    echo '</script>';
-}
-?>

@@ -1,10 +1,19 @@
 <?php
-    if (isset($_GET['page'])) {
-    $page = $_GET['page'];
-    } else {
-    $page = '';
-    }
-    require_once 'layout/header.php';
+if (isset($_GET['page'])) {
+$page = $_GET['page'];
+} else {
+$page = '';
+}
+require_once 'layout/header.php';
+$user_id = 0;
+if(isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+}
+
+if ($user_id == 0) {
+    require_once("view/vHome.php");
+} else {
+
     switch($page){
         case 'thuchi':{
             if (isset($_GET['loai'])) {
@@ -64,7 +73,7 @@
         }
         default: {
             require_once("index.php");}
-}
+    }
     include_once("view/vhangmucvahanmuc.php");
             $p = new viewpro();
             //Hạng mục
@@ -74,11 +83,11 @@
             }elseif(isset($_REQUEST['addProd'])){
                 include_once("view/vaddhangmuc.php");
             }elseif(isset($_REQUEST['Delpro'])){
-				include_once("view/vdelhangmuc.php");}
+                include_once("view/vdelhangmuc.php");}
             elseif(isset($_REQUEST['editpro'])){
                 include_once("view/vehangmuc.php");} 
- //Hạn mức
-             if(isset($_REQUEST['hanmuc'])){
+    //Hạn mức
+                if(isset($_REQUEST['hanmuc'])){
                     echo "<button style='float: right;'><a href='index.php?addProd1'  style='text-decoration:none; color:black'>Thêm hạn mức</a></button>"."<br>";
                     $p->viewadpro();
                 }elseif(isset($_REQUEST['addProd1'])){
@@ -87,9 +96,10 @@
                     include_once("view/vdelhanmuc.php");}
                 elseif(isset($_REQUEST['edithm'])){
                     include_once("view/vehanmuc.php");}
-   if(isset($_REQUEST['vtinhhinh'])){
+    if(isset($_REQUEST['vtinhhinh'])){
                 include_once("view/vtinhhinh.php");
                     }elseif(isset($_REQUEST['xem'])){
                     include_once("view/vtinhhinh.php");}
-    require_once 'layout/footer.php';
+}
+require_once 'layout/footer.php';
 ?>
