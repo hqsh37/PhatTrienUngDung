@@ -115,7 +115,6 @@ if(isset($_GET['dNhap'])){
       $_SESSION["user_id"] = $data[0]["id"];
       $_SESSION["firtname"] = $data[0]["firtname"];
       $_SESSION["lastname"] = $data[0]["lastname"];
-
       echo '<script>';
       echo 'alert("Đăng nhập thành công thành công!");';
       echo 'window.location.href = "../index.php";';

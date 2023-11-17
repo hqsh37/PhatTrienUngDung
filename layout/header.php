@@ -22,12 +22,14 @@ session_start();
 
 // }
 // $_SESSION['user_id'] = 1;
+
+$trangThai = "";
+$user =false;
+
 if(isset($_SESSION['user_id'])) {
     if($_SESSION['user_id']) {
     $user_id = $_SESSION['user_id'];
     $user = true;
-    $trangThai = "";
-
     } else {
         $user = false;
         $trangThai = "disabled";
